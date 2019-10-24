@@ -50,19 +50,21 @@
   };
 </script>
 
-  <meta name="description" content="Context概念Context是一个抽象类，日常用的的具体实现有：Activity,Service,Application,占据了四大组件的三个&amp;lt;br&amp;gt; Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介">
+  <meta name="description" content="Context概念Context是一个抽象类，日常用的的具体实现有：Activity,Service,Application,占据了四大组件的三个&amp;lt;br&amp;gt; Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介    ContextWrapper Context的装饰模式内部的mBase是实际实现者">
+<meta name="keywords" content>
 <meta property="og:type" content="article">
 <meta property="og:title" content="Context及其子类的分析">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;23&#x2F;Context&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;24&#x2F;Context&#x2F;index.html">
 <meta property="og:site_name" content="Joker">
-<meta property="og:description" content="Context概念Context是一个抽象类，日常用的的具体实现有：Activity,Service,Application,占据了四大组件的三个&amp;lt;br&amp;gt; Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介">
+<meta property="og:description" content="Context概念Context是一个抽象类，日常用的的具体实现有：Activity,Service,Application,占据了四大组件的三个&amp;lt;br&amp;gt; Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介    ContextWrapper Context的装饰模式内部的mBase是实际实现者">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;23&#x2F;Context&#x2F;images&#x2F;contenxt_impl.png">
-<meta property="og:updated_time" content="2019-10-24T07:16:21.381Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;privatestring&#x2F;blog&#x2F;blob&#x2F;master&#x2F;source&#x2F;_posts&#x2F;images&#x2F;contenxt_impl.png?raw=true">
+<meta property="og:image" content="https:&#x2F;&#x2F;developer.android.google.cn&#x2F;images&#x2F;activity_lifecycle.png">
+<meta property="og:updated_time" content="2019-10-24T10:10:23.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;23&#x2F;Context&#x2F;images&#x2F;contenxt_impl.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;privatestring&#x2F;blog&#x2F;blob&#x2F;master&#x2F;source&#x2F;_posts&#x2F;images&#x2F;contenxt_impl.png?raw=true">
 
-<link rel="canonical" href="http://yoursite.com/2019/10/23/Context/">
+<link rel="canonical" href="http://yoursite.com/2019/10/24/Context/">
 
 
 <script id="page-configurations">
@@ -187,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/Context/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/Context/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
@@ -209,16 +211,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-10-23 19:35:49" itemprop="dateCreated datePublished" datetime="2019-10-23T19:35:49+08:00">2019-10-23</time>
+              <time title="创建时间：2019-10-24 19:35:49 / 修改时间：18:10:23" itemprop="dateCreated datePublished" datetime="2019-10-24T19:35:49+08:00">2019-10-24</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-24 15:16:21" itemprop="dateModified" datetime="2019-10-24T15:16:21+08:00">2019-10-24</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -243,7 +239,113 @@
 
       
         <h1 id="Context概念"><a href="#Context概念" class="headerlink" title="Context概念"></a>Context概念</h1><pre><code>Context是一个抽象类，日常用的的具体实现有：Activity,Service,Application,占据了四大组件的三个&lt;br&gt;
-Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介</code></pre><p><img src="images/contenxt_impl.png" alt="content"></p>
+Context:上下文，代表与操作系统交互的一种过程，Android在用户行为的过程中都需要Context参与，成为一个连通整个操作流程的媒介</code></pre><p>   <img src="https://github.com/privatestring/blog/blob/master/source/_posts/images/contenxt_impl.png?raw=true" alt="content"></p>
+<h1 id="ContextWrapper-Context的装饰模式"><a href="#ContextWrapper-Context的装饰模式" class="headerlink" title="ContextWrapper Context的装饰模式"></a>ContextWrapper Context的装饰模式</h1><pre><code>内部的mBase是实际实现者，避免代码重复，版本兼容，根据传入者的具体类进入调用&lt;br&gt;
+一般mBase 是通过 初始化或者#attachBaseContext实现赋值&lt;br&gt;
+View#getContext 方法有可能返回ContextWrapper，Application,Activity</code></pre><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Application</th>
+<th align="center">Activity</th>
+<th align="center">Service</th>
+<th align="center">ContentProvider</th>
+<th align="center">BroadcastReceiver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Show a Dialog</td>
+<td align="center">No</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
+<td align="center">NO</td>
+<td align="center">NO</td>
+</tr>
+<tr>
+<td align="center">Start an Activity</td>
+<td align="center">NO1</td>
+<td align="center">YES</td>
+<td align="center">NO1</td>
+<td align="center">NO1</td>
+<td align="center">NO1</td>
+</tr>
+<tr>
+<td align="center">Layout Inflation</td>
+<td align="center">NO2</td>
+<td align="center">YES</td>
+<td align="center">NO2</td>
+<td align="center">NO2</td>
+<td align="center">NO2</td>
+</tr>
+<tr>
+<td align="center">Start a Service</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+</tr>
+<tr>
+<td align="center">Bind to a Service</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
+</tr>
+<tr>
+<td align="center">Send a Broadcast</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+</tr>
+<tr>
+<td align="center">Register BroadcastReceiver</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+</tr>
+<tr>
+<td align="center">Load Resource Values</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>NO1 表示Application context的确可以启动Activity，但是它需要创建一个新任务，并产生一个不标准的回退栈（back stack），通常不推荐这样做。<br>NO2 表示这是非法的，但是这个填充（inflation）的确可以完成，但是是使用所运行的系统默认的主题（theme），而不是你app定义的主题。<br>NO3 在Android4.2以上，如果Receiver是null的话（这是用来获取一个sticky broadcast的当前值的），这是允许的。</p>
+</blockquote>
+<h2 id="Application-应用程序，app有且只有一个，生命周期即App的生命周期"><a href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期" class="headerlink" title="Application 应用程序，app有且只有一个，生命周期即App的生命周期"></a>Application 应用程序，app有且只有一个，生命周期即App的生命周期</h2><h2 id="Activity-应用程序的活动组件"><a href="#Activity-应用程序的活动组件" class="headerlink" title="Activity 应用程序的活动组件"></a>Activity 应用程序的活动组件</h2><pre><code>Activity提供一个可供用户操作的可视化界面，存在自己的一套生命周期，通过&quot;堆栈&quot;的形式进行新建、显示、隐藏、销毁</code></pre><p>   <img src="https://developer.android.google.cn/images/activity_lifecycle.png" alt="activity_lifecycle"></p>
+<h3 id="Activity-启动模式"><a href="#Activity-启动模式" class="headerlink" title="Activity 启动模式"></a>Activity 启动模式</h3><table>
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">“standard” （默认模式）</td>
+<td align="left">默认。系统在启动它的任务中创建Activity的新实例，并将意图路由到该实例。Activity可以多次实例化，每个实例可以属于不同的任务，一个任务可以有多个实例。</td>
+</tr>
+<tr>
+<td align="center">“singleTop”</td>
+<td align="left">如果Activity的实例已存在于当前任务的顶部，则系统通过调用其onNewIntent()方法将意图路由到该实例，而不是创建Activity的新实例。Activity可以多次实例化，每个实例可以属于不同的任务，一个任务可以有多个实例（但只有当后端堆栈顶部的Activity不是Activity的现有实例时）。</td>
+</tr>
+<tr>
+<td align="center">“singleTask”</td>
+<td align="left">系统创建新任务并在新任务的根目录下实例化Activity。但是，如果Activity的实例已存在于单独的任务中，则系统会通过调用其onNewIntent()方法将意图路由到现有实例，而不是创建新实例。一次只能存在一个Activity实例。</td>
+</tr>
+<tr>
+<td align="center">“singleInstance”</td>
+<td align="left">相同”singleTask”，区别在于：系统不启动任何其他Activity纳入控制实例的任务。Activity始终是其任务的唯一成员; 任何由此开始的Activity都在一个单独的任务中打开。</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -252,22 +354,22 @@ Context:上下文，代表与操作系统交互的一种过程，Android在用�
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/content/" rel="tag"># content</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/23/List/" rel="next" title="Android中的List简要">
-                  <i class="fa fa-chevron-left"></i> Android中的List简要
+                <a href="/2019/10/24/map/" rel="next" title="Map的一些注意知识点">
+                  <i class="fa fa-chevron-left"></i> Map的一些注意知识点
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/24/map/" rel="prev" title="Map的一些注意知识点">
-                  Map的一些注意知识点 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -306,7 +408,7 @@ Context:上下文，代表与操作系统交互的一种过程，Android在用�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Context概念"><span class="nav-number">1.</span> <span class="nav-text">Context概念</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Context概念"><span class="nav-number">1.</span> <span class="nav-text">Context概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ContextWrapper-Context的装饰模式"><span class="nav-number">2.</span> <span class="nav-text">ContextWrapper Context的装饰模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Application 应用程序，app有且只有一个，生命周期即App的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-应用程序的活动组件"><span class="nav-number">2.2.</span> <span class="nav-text">Activity 应用程序的活动组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-启动模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">Activity 启动模式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -335,7 +437,7 @@ Context:上下文，代表与操作系统交互的一种过程，Android在用�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
