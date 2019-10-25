@@ -60,7 +60,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;privatestring&#x2F;blog&#x2F;blob&#x2F;master&#x2F;source&#x2F;_posts&#x2F;images&#x2F;contenxt_impl.png?raw=true">
 <meta property="og:image" content="https:&#x2F;&#x2F;developer.android.google.cn&#x2F;images&#x2F;activity_lifecycle.png">
-<meta property="og:updated_time" content="2019-10-25T03:10:29.671Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;developer.android.com&#x2F;images&#x2F;service_lifecycle.png">
+<meta property="og:updated_time" content="2019-10-25T08:03:55.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;privatestring&#x2F;blog&#x2F;blob&#x2F;master&#x2F;source&#x2F;_posts&#x2F;images&#x2F;contenxt_impl.png?raw=true">
 
@@ -219,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-25 11:10:29" itemprop="dateModified" datetime="2019-10-25T11:10:29+08:00">2019-10-25</time>
+                <time title="修改时间：2019-10-25 16:03:55" itemprop="dateModified" datetime="2019-10-25T16:03:55+08:00">2019-10-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -327,7 +328,7 @@ View#getContext 方法有可能返回ContextWrapper，Application,Activity</code
 <blockquote>
 <p>NO1 表示Application context的确可以启动Activity，但是它需要创建一个新任务，并产生一个不标准的回退栈（back stack），通常不推荐这样做。<br>NO2 表示这是非法的，但是这个填充（inflation）的确可以完成，但是是使用所运行的系统默认的主题（theme），而不是你app定义的主题。<br>NO3 在Android4.2以上，如果Receiver是null的话（这是用来获取一个sticky broadcast的当前值的），这是允许的。</p>
 </blockquote>
-<h2 id="Application-应用程序，app有且只有一个，生命周期即App的生命周期"><a href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期" class="headerlink" title="Application 应用程序，app有且只有一个，生命周期即App的生命周期"></a>Application 应用程序，app有且只有一个，生命周期即App的生命周期</h2><h2 id="Activity-应用程序的活动组件"><a href="#Activity-应用程序的活动组件" class="headerlink" title="Activity 应用程序的活动组件"></a>Activity 应用程序的活动组件</h2><pre><code>Activity提供一个可供用户操作的可视化界面，存在自己的一套生命周期，通过&quot;堆栈&quot;的形式进行新建、显示、隐藏、销毁</code></pre><p>   <img src="https://developer.android.google.cn/images/activity_lifecycle.png" alt="activity_lifecycle"></p>
+<h2 id="Application-应用程序，app有且只有一个，生命周期即App的生命周期"><a href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期" class="headerlink" title="Application 应用程序，app有且只有一个，生命周期即App的生命周期"></a>Application 应用程序，app有且只有一个，生命周期即App的生命周期</h2><h2 id="Activity-应用程序的活动组件"><a href="#Activity-应用程序的活动组件" class="headerlink" title="Activity 应用程序的活动组件"></a>Activity 应用程序的活动组件</h2><pre><code>Activity提供一个可供用户操作的可视化界面，存在自己的一套生命周期，通过&quot;堆栈&quot;的形式进行新建、显示、隐藏、销毁</code></pre><h3 id="Activity-生命周期"><a href="#Activity-生命周期" class="headerlink" title="Activity 生命周期"></a>Activity 生命周期</h3><p>   <img src="https://developer.android.google.cn/images/activity_lifecycle.png" alt="activity_lifecycle"></p>
 <h3 id="Activity-启动模式"><a href="#Activity-启动模式" class="headerlink" title="Activity 启动模式"></a>Activity 启动模式</h3><table>
 <thead>
 <tr>
@@ -373,7 +374,13 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
 <td align="left">如果正在启动的Activity已在当前任务中运行，则不会启动该Activity的新实例，而是销毁其上的所有其他Activitys，并将此意图传递给Activity的恢复实例</td>
 </tr>
 </tbody></table>
-<h2 id="Service-不可见服务"><a href="#Service-不可见服务" class="headerlink" title="Service 不可见服务"></a>Service 不可见服务</h2>
+<h2 id="Service-不可见服务"><a href="#Service-不可见服务" class="headerlink" title="Service 不可见服务"></a>Service 不可见服务</h2><pre><code>Service 是一种可在后台执行长时间运行操作而不提供界面的应用组件&lt;br&gt;
+官网说可以在此执行耗时操作，实际发现 Service 是在ActivityThread 线程，执行耗时操作会导致 ANR ，耗时操作需要新建线程</code></pre><h3 id="Service-生命周期"><a href="#Service-生命周期" class="headerlink" title="Service 生命周期"></a>Service 生命周期</h3><p>   <img src="https://developer.android.com/images/service_lifecycle.png" alt="service_livecycle"></p>
+<h3 id="Service-启动方式"><a href="#Service-启动方式" class="headerlink" title="Service 启动方式"></a>Service 启动方式</h3><ol>
+<li><code>startService()</code>或 <code>startForegroundService()</code> ， <code>onBind()</code>方法可返回null,<br><br>调用的生命周期： onCreate –&gt; onStartCommand(可多次调用) –&gt; onDestroy</li>
+<li><code>bindService</code>， <code>onBind()</code>方法需要返回一个IBinder的不可空对象。绑定到服务必须提供 <code>ServiceConnection</code> 的实现<br><br>调用的生命周期： onCreate()-&gt;onBind()-&gt;Service running–&gt;onUnbind() -&gt; onDestroy()</li>
+</ol>
+
     </div>
 
     
@@ -435,7 +442,7 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Context概念"><span class="nav-number">1.</span> <span class="nav-text">Context概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ContextWrapper-Context的装饰模式"><span class="nav-number">2.</span> <span class="nav-text">ContextWrapper Context的装饰模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Application 应用程序，app有且只有一个，生命周期即App的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-应用程序的活动组件"><span class="nav-number">2.2.</span> <span class="nav-text">Activity 应用程序的活动组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-启动模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">Activity 启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taskAffinity-属性"><span class="nav-number">2.2.2.</span> <span class="nav-text">taskAffinity 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent-flags-跳转意图"><span class="nav-number">2.2.3.</span> <span class="nav-text">Intent flags 跳转意图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-不可见服务"><span class="nav-number">2.3.</span> <span class="nav-text">Service 不可见服务</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Context概念"><span class="nav-number">1.</span> <span class="nav-text">Context概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ContextWrapper-Context的装饰模式"><span class="nav-number">2.</span> <span class="nav-text">ContextWrapper Context的装饰模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-应用程序，app有且只有一个，生命周期即App的生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Application 应用程序，app有且只有一个，生命周期即App的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-应用程序的活动组件"><span class="nav-number">2.2.</span> <span class="nav-text">Activity 应用程序的活动组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-生命周期"><span class="nav-number">2.2.1.</span> <span class="nav-text">Activity 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-启动模式"><span class="nav-number">2.2.2.</span> <span class="nav-text">Activity 启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taskAffinity-属性"><span class="nav-number">2.2.3.</span> <span class="nav-text">taskAffinity 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent-flags-跳转意图"><span class="nav-number">2.2.4.</span> <span class="nav-text">Intent flags 跳转意图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-不可见服务"><span class="nav-number">2.3.</span> <span class="nav-text">Service 不可见服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-生命周期"><span class="nav-number">2.3.1.</span> <span class="nav-text">Service 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-启动方式"><span class="nav-number">2.3.2.</span> <span class="nav-text">Service 启动方式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
