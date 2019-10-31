@@ -213,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-25 16:03:55" itemprop="dateModified" datetime="2019-10-25T16:03:55+08:00">2019-10-25</time>
+                <time title="修改时间：2019-10-25 17:18:49" itemprop="dateModified" datetime="2019-10-25T17:18:49+08:00">2019-10-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -643,6 +643,371 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E6%96%B0%E4%B8%9C%E8%A5%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
+      <meta itemprop="name" content="Joker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/02/swift-%E6%96%B0%E4%B8%9C%E8%A5%BF/" class="post-title-link" itemprop="url">swift-新东西</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-02 16:07:26" itemprop="dateCreated datePublished" datetime="2018-01-02T16:07:26+08:00">2018-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-29 17:28:01" itemprop="dateModified" datetime="2019-10-29T17:28:01+08:00">2019-10-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="元组-Tuples"><a href="#元组-Tuples" class="headerlink" title="元组 Tuples"></a>元组 Tuples</h2><ol>
+<li>定义1：let info = (“joker”,100,true)<br><pre><code>info.0; info.1; info.2</code></pre></li>
+<li>定义2：let (name,age,good) = (“joker”,100,true)<br><pre><code>name, age, good</code></pre></li>
+<li>定义3：let info = (name:”joker”,age:100,good:true)<br><pre><code>info.name , info.age , info.good&lt;br&gt;</code></pre></li>
+</ol>
+<p>也可以定义用 _ 表示不关心该数据， 不能访问，元组的数据类型不能改变<br><br>结合关键字typealias比较好用<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias namedFishesType = (first:Int, second:String, third:Bool)</span><br><span class="line">let namedFishes: namedFishesType = (1, &quot;tow&quot;, false)</span><br></pre></td></tr></table></figure><br>元组判断  (使用下划线（ _）来表明匹配所有可能的值)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let somePoint = (1, -1)</span><br><span class="line">switch somePoint &#123;</span><br><span class="line">case (0, 0):   </span><br><span class="line">     print(&quot;(0, 0) is at the origin&quot;)</span><br><span class="line">case (_, 0):    </span><br><span class="line">     print(&quot;(\(somePoint.0), 0) is on the x-axis&quot;)</span><br><span class="line">case (0, _):</span><br><span class="line">     print(&quot;(0, \(somePoint.1)) is on the y-axis&quot;)</span><br><span class="line">case (-2...2, -2...2):</span><br><span class="line">     print(&quot;(\(somePoint.0), \(somePoint.1)) is inside the box&quot;)</span><br><span class="line">default:    print(&quot;(\(somePoint.0), \(somePoint.1)) is outside of the box&quot;)&#125;</span><br><span class="line"></span><br><span class="line">// prints &quot;(1, 1) is inside the box&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><ol>
+<li>do-while换成了<code>repeat-while</code> 其它不变</li>
+<li>各种 <code>condition</code>  :  condition语句可以不用括号包裹，如 ：if i&gt;10{ statements}<pre><code>condition只支持true or false  不再像oc支持判空或者判0 必须加以判定，如：if ob != nil {}      if  index != 0 {}</code></pre></li>
+<li><code>switch</code>语句，不再需要显式break语句，不再贯穿，如果需要贯穿则需要加关键字 fallthrough<pre><code>可用区间匹配  ...  ..&lt; 
+复合情况  ，可用，分隔  case 1,3,5,6:</code></pre></li>
+<li>可选项绑定  （与一般if控制流有区别，if 后condition 必定是Bool） <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;12&quot;        </span><br><span class="line">if let id = Int(str) &#123;     </span><br><span class="line">       print(&quot;解析成功&quot;)        </span><br><span class="line">&#125;else&#123;     </span><br><span class="line">       print(&quot;解析失败&quot;)        </span><br><span class="line">&#125;</span><br><span class="line">//普通if用法         </span><br><span class="line">let str = &quot;12&quot;        </span><br><span class="line">let id = Int(str)        </span><br><span class="line">if id != nil &#123;      </span><br><span class="line">      print(&quot;解析成功&quot;)        </span><br><span class="line">&#125;else&#123;      </span><br><span class="line">      print(&quot;解析失败&quot;)        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="？和！的使用和区别"><a href="#？和！的使用和区别" class="headerlink" title="？和！的使用和区别"></a>？和！的使用和区别</h2><h3 id="问号？"><a href="#问号？" class="headerlink" title="问号？"></a>问号？</h3><ol>
+<li>声明时添加？，告诉编译器这个是<code>Optional</code>的，如果声明时没有手动初始化，就自动初始化为nil</li>
+<li>在对变量值操作前添加？，判断如果变量时nil，则不响应后面的方法。</li>
+</ol>
+<h3 id="叹号！"><a href="#叹号！" class="headerlink" title="叹号！"></a>叹号！</h3><ol>
+<li>声明时添加！，告诉编译器这个是<code>Optional</code>的，并且之后对该变量操作的时候，都隐式的在操作前添加！</li>
+<li>在对变量操作前添加！，表示默认为非nil，直接解包进行处理</li>
+</ol>
+<h2 id="不确定类型"><a href="#不确定类型" class="headerlink" title="不确定类型"></a>不确定类型</h2><ol>
+<li>AnyObject  可以表示任何类类型的实例。</li>
+<li>Any  可以表示任何类型，包括函数类型。</li>
+</ol>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ol>
+<li>协议可以放属性，子类可以继承修改  如：<code>var nickName:String { get set}</code></li>
+<li>协议可以放初始化方法</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
+      <meta itemprop="name" content="Joker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">swift-关键字</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-02 16:07:26" itemprop="dateCreated datePublished" datetime="2018-01-02T16:07:26+08:00">2018-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-29 17:37:43" itemprop="dateModified" datetime="2019-10-29T17:37:43+08:00">2019-10-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="objc-用于swift提供oc调用"><a href="#objc-用于swift提供oc调用" class="headerlink" title="@objc 用于swift提供oc调用"></a><code>@objc</code> 用于swift提供oc调用</h2><ol>
+<li>在方法上加如<br><br>@objc private func gotoLanguage(_ sender:UIButton){}<br><br>因为Button加事件是OC调用  使用 btn.addTarget(self, action: #selector(self.gotoLanguage(_:)), for: .touchUpInside)<h2 id="数据类型-方法"><a href="#数据类型-方法" class="headerlink" title="数据类型 方法"></a>数据类型 方法</h2><ol>
+<li><code>var</code> 可变数据 </li>
+<li><code>let</code>不可变数据，常量   </li>
+<li><code>typealias</code> 给类型加别名   typealias  joker = UIViewController</li>
+<li><code>as</code>  <code>is</code>   String as NSString  转型  类型检查操作符 is   let s = “joker”;  if s is String {}</li>
+<li><code>inout</code>  参见三，swift基础的方法</li>
+<li><code>lazy</code> 懒加载</li>
+<li><code>static class</code>  在func前加的关键字表示类型方法，都可以用于指定类方法.不同的是用class关键字指定的类方法可以被子类重写</li>
+<li><code>get{retrun value}</code> <code>set{newValue}</code> 使用set 必须要用get 但是get 可以单独使用<br><br><code>willSet { newValue} didSet {oldValue}</code>  set方法监听，不能与上面的共存，官方编译器不允许<br>9，<code>mutating</code>  异变，结构体和枚举是值类型。默认情况下，值类型属性不能被自身的实例方法修改，mutating加在func前可进行修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;    </span><br><span class="line">   var x = 0.0, y = 0.0    </span><br><span class="line">   mutating func moveBy(x deltaX: Double, y deltaY: Double) &#123;   </span><br><span class="line">        x += deltaX   </span><br><span class="line">        y += deltaY    </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var somePoint = Point(x: 1.0, y: 1.0)</span><br><span class="line">somePoint.moveBy(x: 2.0, y: 3.0)</span><br><span class="line">print(&quot;The point is now at (\(somePoint.x), \(somePoint.y))&quot;)</span><br><span class="line">// prints &quot;The point is now at (3.0, 4.0)&quot;</span><br><span class="line">-------------------------------------------------------- </span><br><span class="line">enum TriStateSwitch &#123;    </span><br><span class="line">      case off, low, high    </span><br><span class="line">      mutating func next() &#123;        </span><br><span class="line">          switch self &#123;        case .off:            self = .low        case .low:            self = .high        case .high:            self = .off        &#125;    &#125;&#125;var ovenLight = TriStateSwitch.lowovenLight.next()// ovenLight is now equal to .highovenLight.next()// ovenLight is now equal to .off</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<p>10， subscript 下标 下标脚本允许你通过在实例名后面的方括号内写一个或多个值对该类的实例进行查询， 如：someArray[index]，someDictionary[key]<br> 自定义：get set可选，与类属性一样<br>subscript(index: Int) -&gt; Int {    get {        // return an appropriate subscript value here    }    set(newValue) {        // perform a suitable setting action here    }} struct TimesTable {    let multiplier: Int    subscript(index: Int) -&gt; Int {        return multiplier * index    }}let threeTimesTable = TimesTable(multiplier: 3)print(“six times three is (threeTimesTable[6])”)// prints “six times three is 18”<br> struct Matrix {    let rows: Int, columns: Int    var grid: [Double]    init(rows: Int, columns: Int) {        self.rows = rows        self.columns = columns        grid = Array(repeating: 0.0, count: rows * columns)    }    func indexIsValid(row: Int, column: Int) -&gt; Bool {        return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns    }    subscript(row: Int, column: Int) -&gt; Double {        get {            assert(indexIsValid(row: row, column: column), “Index out of range”)            return grid[(row * columns) + column]        }        set {            assert(indexIsValid(row: row, column: column), “Index out of range”)            grid[(row * columns) + column] = newValue        }    }}var matrix = Matrix(rows: 2, columns: 2)matrix[0, 1] = 1.5matrix[1, 0] = 3.2//  0.0 1.5//  3.2 0.0<br>11， overide  重写var    func     class fuc    subscript<br>12， final   阻止子类对相应的属性，方法，下标等重写</p>
+<p>三，语句<br>1，switch 贯穿  fallthrough<br>2，switch 分句检查 where<br>3,  判断语句：guard   guard condition else{ statements;  retrun}  与if语句类似，相比总有一个else语句  else里面必需用return ， break ， continue 或者 throw 返回<br>                       它会让正常地写代码而不用把它们包裹进else 代码块，并且它允许你保留在需求之后处理危险的需求<br>4，sdk版本号判定，系统新增   if #available(iOS 10, macOS 10.12, *) {}<br>5，defer  defer语句延迟执行直到当前范围退出<br>func processFile(filename: String) throws {    if exists(filename) {        let file = open(filename)        defer {            close(file)        }        while let line = try file.readline() {            // Work with the file.        }        // close(file) is called here, at the end of the scope.    }}使用 defer语句来保证 open(<em>:)函数能调用 close(</em>:)</p>
+<p>6, 访问控制<br>         通过在实体的引入之前添加 open ， public ， internal ， fileprivate ，或 private  修饰符来定义访问级别<br>访问优先级如下：<br>      open:  在Module内外都可以访问，继承，重载<br>      public: 只在Module内可访问，继承，重载，外只能访问<br>     internal ：默认访问级别，本Module操作<br>     fileprivate : 在当前swift文件里可操作<br>      private ：在当前类可操作</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/swift-%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
+      <meta itemprop="name" content="Joker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/28/swift-%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">swift_基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-28 14:11:28" itemprop="dateCreated datePublished" datetime="2017-12-28T14:11:28+08:00">2017-12-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-29 17:28:01" itemprop="dateModified" datetime="2019-10-29T17:28:01+08:00">2019-10-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="不同类型数据不能直接处理，需要转型"><a href="#不同类型数据不能直接处理，需要转型" class="headerlink" title="不同类型数据不能直接处理，需要转型"></a>不同类型数据不能直接处理，需要转型</h2><pre><code>let i = 1; let j = 2.0;  let m = Double(i)+j;
+也可直接定义 let i = 1 + 1.0 时，可以获取Double数据</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<li>位运算<br> ~ 取反  &amp;位与  |位或 ^位异  &lt;&lt;左移 &gt;&gt;右移</li>
+<li>区间运算符 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1..&lt;9  1到8    </span><br><span class="line">1...9   1到9 </span><br><span class="line">list[...3]  list 从0到3</span><br><span class="line">list[3....] list从到结束</span><br><span class="line">let range = ...3  0到3的PartialRangeThrough</span><br><span class="line">``` </span><br><span class="line">3，??</span><br><span class="line">两个？号后接默认值</span><br></pre></td></tr></table></figure>
+let list = [“1”,”2”]<br>let s = list[3] ?? “3”<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">let img : UIImageView? = nil        </span><br><span class="line">let icon :UIImage? = img?.image ?? UIImage(named: &quot;xxx.png&quot;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ol>
+<li><p>“双引号”，与普通NSString一样</p>
+</li>
+<li><p>“”” 三引号 “””  可定义多行，可加双引号，注意：中间的空格号最后封闭有关</p>
+</li>
+<li><p>如果想转成熟悉的NSString用的话可以：let str = “”;  (str as NSString).substring(to: 10)</p>
+</li>
+<li><p>字符串拼接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let string1 = &quot;hello&quot;let string2 = &quot; there&quot;var welcome = string1 + string2//  &quot;hello there&quot;</span><br><span class="line">var instruction = &quot;look over&quot;instruction += string2// “look over there&quot;</span><br><span class="line">let exclamationMark: Character = &quot;!&quot;&quot;hello there”.append(exclamationMark)// &quot;hello there!&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串插值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let multiplier = 3</span><br><span class="line">let message = &quot;\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)&quot; </span><br><span class="line">// &quot;3 times 2.5 is 7.5&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="定义和调用函数"><a href="#定义和调用函数" class="headerlink" title="定义和调用函数"></a>定义和调用函数</h2><ol>
+<li><p>定义：</p>
+<ul>
+<li><p>多个形参  <code>func goodJoker(param:String,param2:String) -&gt; [String:String]   {return [param:param2]}</code></p>
+</li>
+<li><p>复合返回  <code>func goodJoker(param:String,param2:String) -&gt; (v1:String , v2:String)  {return (param , param2)}</code></p>
+</li>
+<li><p>可空   如果返回的值可能为nil   则需要在返回值定义时后面加？ 如 ： <code>(v1:String , v2:String)?</code></p>
+<pre><code>类似 (String, String)?的可选元组类型和包含可选类型的元组 (String?, String?)是不同的。对于可选元组类型，整个元组是可选的，而不仅仅是元组里边的单个值</code></pre></li>
+<li><p>参数标签  上面方法调用 self.goodJoker(param:”joker”, param2:”is good”)  每次调用都需要tag与OC一样<br></p>
+<pre><code>也可以自定义`tag func joker(tag param:String)` 调用  self.joker(tag: &quot;joker is good&quot;)&lt;br&gt;
+神奇的_    如果用下划线定义tag 则可以直接调用 self.joker(&quot;joker is good&quot;)</code></pre></li>
+<li><p>参数默认值    OC中定义不同的参数传值需要定义多个方法，现在一个搞定<br> <code>func whoGood(_ who:String = &quot;joker&quot;,  is  isGood:Bool = true) {}</code><br><br>调用方式 </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.whoGood(&quot;me&quot;) </span><br><span class="line">self.whoGood(is:false)      </span><br><span class="line">self.whoGood()</span><br></pre></td></tr></table></figure></li>
+<li><p>可变形参    </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func test(numbers: Double...) -&gt;Double &#123;</span><br><span class="line">   var total:Double = 0;  </span><br><span class="line">   for number in numbers&#123; </span><br><span class="line">      total += number</span><br><span class="line">     &#125;; </span><br><span class="line">   retrun total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>输入输出 inout：  函数能够修改一个形式参数的值，而且你想这些改变在函数结束之后依然生效，那么就需要将形式参数定义为输入输出形式参数  （记得加&amp;）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func swapTwoInts(_ a: inout Int, _ b: inout Int) &#123;//两个参数值替换    </span><br><span class="line">        let temporaryA = a    </span><br><span class="line">        a = b    </span><br><span class="line">        b = temporaryA</span><br><span class="line">    &#125;</span><br><span class="line">var someInt = 3</span><br><span class="line">var anotherInt = 107</span><br><span class="line">swapTwoInts(&amp;someInt, &amp;anotherInt)</span><br><span class="line">print(&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;) // prints &quot;someInt is now 107, and anotherInt is now 3&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数类型:  函数也可以做为参数，返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">func addTwoInts(_ a: Int, _ b: Int) -&gt; Int &#123;    </span><br><span class="line">     return a + b</span><br><span class="line"> &#125;</span><br><span class="line"> var mathFunction: (Int, Int) -&gt; Int = addTwoInts// 作为参数</span><br><span class="line"> </span><br><span class="line"> ——————————————————————————————————————————————————</span><br><span class="line"> </span><br><span class="line"> func printMathResult(_ mathFunction: (Int, Int) -&gt; Int, _ a: Int, _ b: Int) &#123;// 作为形式参数    </span><br><span class="line">    print(&quot;Result: \(mathFunction(a, b))&quot;)</span><br><span class="line"> &#125;</span><br><span class="line"> printMathResult(addTwoInts, 3, 5)</span><br><span class="line"> // Prints &quot;Result: 8&quot;</span><br><span class="line"> </span><br><span class="line"> ——————————————————————————————————————————————————</span><br><span class="line"> </span><br><span class="line"> func chooseMath(_ p:Int) -&gt; String &#123;        </span><br><span class="line">    return &quot;this parameter = \(p)&quot;;    </span><br><span class="line">  &#125;</span><br><span class="line">  func chooseStepFunction(_ method:(Int) -&gt; String,_ p:Int) -&gt; (Int,Int) -&gt; Int &#123;          </span><br><span class="line">        print(method(p))          </span><br><span class="line">        return addTwoInts    </span><br><span class="line">  &#125;</span><br><span class="line">  print(&quot;new result = \((chooseStepFunction(chooseMath,1))(3,5))&quot;)</span><br><span class="line">  // this parameter = 1</span><br><span class="line">  // new result = 8</span><br><span class="line">  解读：上面分别将chooseMath作为参数将addTwoInts作为返回值，</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内嵌函数 在默认情况下在外部是被隐藏起来的，但却仍然可以通过包裹它们的函数来调用它们。<br><br>包裹的函数也可以返回它内部的一个内嵌函数来在另外的范围里使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func chooseStepFunction(backward: Bool) -&gt; (Int) -&gt; Int &#123;    </span><br><span class="line">     func stepForward(input: Int) -&gt; Int &#123; </span><br><span class="line">         return input + 1 </span><br><span class="line">     &#125;    </span><br><span class="line">     func stepBackward(input: Int) -&gt; Int &#123; </span><br><span class="line">         return input - 1 </span><br><span class="line">      &#125;    </span><br><span class="line">      return backward ? stepBackward : stepForward</span><br><span class="line"> &#125;</span><br><span class="line"> var currentValue = -4</span><br><span class="line"> let moveNearerToZero = chooseStepFunction(backward: currentValue &gt; 0)</span><br><span class="line"> // moveNearerToZero now refers to the nested stepForward() function</span><br><span class="line"> while currentValue != 0 &#123;    </span><br><span class="line">     print(&quot;\(currentValue)... &quot;)    </span><br><span class="line">     currentValue = moveNearerToZero(currentValue)</span><br><span class="line"> &#125;</span><br><span class="line"> print(&quot;zero!&quot;)</span><br><span class="line"> // -4...// -3...// -2...// -1...// zero!</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="闭包-（与oc的blocks相似）"><a href="#闭包-（与oc的blocks相似）" class="headerlink" title="闭包  （与oc的blocks相似）"></a>闭包  （与oc的blocks相似）</h2><ol>
+<li><p>闭包语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    &#123; (parameters) -&gt; (return type) in    </span><br><span class="line">    statements  </span><br><span class="line">&#125;</span><br><span class="line">例：</span><br><span class="line">var list = [1, 2]</span><br><span class="line">list.sort &#123; (s1:Int, s2:Int) -&gt; Bool in            </span><br><span class="line">                    return s1&gt;s2        </span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>闭包捕获值<br><br> 一个闭包能够从上下文捕获已被定义的常量和变量。即使定义这些常量和变量的原作用域已经不存在，闭包仍能够在其函数体内引用和修改这些值</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func makeIncrementer(forIncrement amount: Int) -&gt; () -&gt; Int &#123;    </span><br><span class="line">        var runningTotal = 0    </span><br><span class="line">        func incrementer() -&gt; Int &#123;        </span><br><span class="line">                runningTotal += amount        </span><br><span class="line">                return runningTotal    </span><br><span class="line">         &#125;    </span><br><span class="line">        return incrementer</span><br><span class="line"> &#125;</span><br><span class="line"> let incrementByTen = makeIncrementer(forIncrement: 10)  </span><br><span class="line"> incrementByTen()  //return a value of 10  </span><br><span class="line"> incrementByTen()  //return a value of 20  </span><br><span class="line"> incrementByTen()  //return a value of 30</span><br></pre></td></tr></table></figure></li>
+<li><p>闭包的循环强引用</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class ClosureCode &#123;    </span><br><span class="line"> var delegate :SubVideoMode?    </span><br><span class="line"> var nameStr = &quot;&quot;    </span><br><span class="line"> lazy var someClosure: (Int, String) -&gt; String = &#123;</span><br><span class="line">         [unowned self, weak delegate = self.delegate] (index: Int, stringToProcess: String) -&gt; String in</span><br><span class="line">          return &quot;print \(self.nameStr)  \(index)  \(stringToProcess)&quot;    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用  <code>weak</code> 弱引用 与 <code>unowned</code>  无主引用 （不安全，无主引用假定是永远有值的，程序会尝试访问曾今存在过的内存地址）<br><br>   当两个对象分别强引用对方时，无法释放，需要关键字标记  （应用区别，加？可空的用<code>weak</code>,没有？不可空的用<code>unowned</code>）</p>
+</li>
+</ol>
+<h2 id="权举"><a href="#权举" class="headerlink" title="权举"></a>权举</h2><ol>
+<li>定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//普通</span><br><span class="line">enum UserName&#123;      </span><br><span class="line">    case joker      </span><br><span class="line">    case god   // 也可以直接用，分隔  case joker,god</span><br><span class="line">&#125;</span><br><span class="line">//定义不同类型值 </span><br><span class="line">enum Species&#123;</span><br><span class="line">     case person(String,Int)        </span><br><span class="line">     case pig(Int)</span><br><span class="line"> &#125;</span><br><span class="line">//指定值 </span><br><span class="line">enum Numbers&#123;</span><br><span class="line">     case zero = 0 , one ,two</span><br><span class="line">&#125;</span><br><span class="line">//zero明确为0，后面的依次加1</span><br><span class="line">// Numbers.zero.rawValue 为0  如果定义时未给值刚为zero</span><br><span class="line">//可以通过原始值初始化  let num = Numbers(rawValue: 1) 获取的是Numbers.one</span><br></pre></td></tr></table></figure></li>
+<li>使用:<br><br> 可以直接以点开头，如：.joker  则是获取的是UserName.joker  btn的属性  btn.setTitleColor(UIColor.white, for: .normal)<br><br> 不同类型值的使用 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">switch species &#123;</span><br><span class="line">case .persion(let name, let age):    print(&quot;person: \(name), \(age)&quot;)</span><br><span class="line">case .pig(let weight):    print(&quot;pig: \(weight).&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>六，类和结构休</p>
+<ol>
+<li>定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class SomeClass &#123;</span><br><span class="line">    // class definition goes here</span><br><span class="line">&#125;</span><br><span class="line">struct SomeStructure &#123;</span><br><span class="line">    // structure definition goes here</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>类实例判断是否引用自同一个类实例   相同于（===）  不相同于（!==）</li>
+<li><code>convenience</code>: convenience用来进行方便的初始化，就相当于构造函数重载。不能调用super.init  可以用self.init</li>
+<li><code>required</code>：required  子类需要添加异于父类的初始化方法时，必须先要实现父类中使用required修饰符修饰过的初始化方法，并且也要使用required修饰符而不是override</li>
+<li><code>final</code> 可以防止方法重写</li>
+<li>可失败初始化器  <code>init?{}</code> 可以返回nil</li>
+</ol>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    try expression</span><br><span class="line">    statements</span><br><span class="line">&#125; catch pattern 1 &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125; catch pattern 2 where condition &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -690,20 +1055,20 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

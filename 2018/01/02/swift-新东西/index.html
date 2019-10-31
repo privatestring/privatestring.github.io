@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="HashMap简要   HashMap允许key和value都为null，非线程安全,无序的集合 储存方式 长度8以下为链表储存，8以上为红黑树 负载因子：当达到size*负载因子 时会进行扩容 2^n  LinkedHashMap简要   LinkedHashMap是继承 HashMap ，解决HashMap无序的问题，非线程安全 TreeMap简要   TreeMap 是有序的红黑树储存，ke">
-<meta name="keywords" content="数据结构">
+  <meta name="description" content="元组 Tuples 定义1：let info = (“joker”,100,true)info.0; info.1; info.2 定义2：let (name,age,good) = (“joker”,100,true)name, age, good 定义3：let info = (name:”joker”,age:100,good:true)info.name , info.age , info">
+<meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map的一些注意知识点">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;24&#x2F;map&#x2F;index.html">
+<meta property="og:title" content="swift-新东西">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;01&#x2F;02&#x2F;swift-%E6%96%B0%E4%B8%9C%E8%A5%BF&#x2F;index.html">
 <meta property="og:site_name" content="Joker">
-<meta property="og:description" content="HashMap简要   HashMap允许key和value都为null，非线程安全,无序的集合 储存方式 长度8以下为链表储存，8以上为红黑树 负载因子：当达到size*负载因子 时会进行扩容 2^n  LinkedHashMap简要   LinkedHashMap是继承 HashMap ，解决HashMap无序的问题，非线程安全 TreeMap简要   TreeMap 是有序的红黑树储存，ke">
+<meta property="og:description" content="元组 Tuples 定义1：let info = (“joker”,100,true)info.0; info.1; info.2 定义2：let (name,age,good) = (“joker”,100,true)name, age, good 定义3：let info = (name:”joker”,age:100,good:true)info.name , info.age , info">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-24T05:59:05.520Z">
+<meta property="og:updated_time" content="2019-10-29T09:28:01.007Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/10/24/map/">
+<link rel="canonical" href="http://yoursite.com/2018/01/02/swift-%E6%96%B0%E4%B8%9C%E8%A5%BF/">
 
 
 <script id="page-configurations">
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title>Map的一些注意知识点 | Joker</title>
+  <title>swift-新东西 | Joker</title>
   
 
 
@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/map/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E6%96%B0%E4%B8%9C%E8%A5%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
@@ -199,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Map的一些注意知识点
+          swift-新东西
         </h1>
 
         <div class="post-meta">
@@ -208,18 +208,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-10-24 11:01:33 / 修改时间：13:59:05" itemprop="dateCreated datePublished" datetime="2019-10-24T11:01:33+08:00">2019-10-24</time>
+              <time title="创建时间：2018-01-02 16:07:26" itemprop="dateCreated datePublished" datetime="2018-01-02T16:07:26+08:00">2018-01-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-29 17:28:01" itemprop="dateModified" datetime="2019-10-29T17:28:01+08:00">2019-10-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
                   </a>
                 </span>
             </span>
@@ -235,17 +241,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="HashMap简要"><a href="#HashMap简要" class="headerlink" title="HashMap简要"></a>HashMap简要</h1><p>   <code>HashMap</code>允许key和value都为null，非线程安全,无序的集合</p>
-<h3 id="储存方式"><a href="#储存方式" class="headerlink" title="储存方式"></a>储存方式</h3><ol>
-<li>长度8以下为链表储存，8以上为红黑树</li>
-<li><code>负载因子</code>：当达到<code>size*负载因子</code> 时会进行扩容 <code>2^n</code></li>
+        <h2 id="元组-Tuples"><a href="#元组-Tuples" class="headerlink" title="元组 Tuples"></a>元组 Tuples</h2><ol>
+<li>定义1：let info = (“joker”,100,true)<br><pre><code>info.0; info.1; info.2</code></pre></li>
+<li>定义2：let (name,age,good) = (“joker”,100,true)<br><pre><code>name, age, good</code></pre></li>
+<li>定义3：let info = (name:”joker”,age:100,good:true)<br><pre><code>info.name , info.age , info.good&lt;br&gt;</code></pre></li>
 </ol>
-<h1 id="LinkedHashMap简要"><a href="#LinkedHashMap简要" class="headerlink" title="LinkedHashMap简要"></a>LinkedHashMap简要</h1><p>   <code>LinkedHashMap</code>是继承 <code>HashMap</code> ，解决<code>HashMap</code>无序的问题，非线程安全</p>
-<h1 id="TreeMap简要"><a href="#TreeMap简要" class="headerlink" title="TreeMap简要"></a>TreeMap简要</h1><p>   <code>TreeMap</code> 是有序的红黑树储存，key不能为空</p>
-<h1 id="常用的线程安全的Map"><a href="#常用的线程安全的Map" class="headerlink" title="常用的线程安全的Map"></a>常用的线程安全的Map</h1><ol>
-<li>ConcurrentHashMap 推荐，加锁</li>
-<li>SynchronizedMap 通过<code>Collections#synchronizedMap</code>获取</li>
-<li>HashTable 很少用到了</li>
+<p>也可以定义用 _ 表示不关心该数据， 不能访问，元组的数据类型不能改变<br><br>结合关键字typealias比较好用<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias namedFishesType = (first:Int, second:String, third:Bool)</span><br><span class="line">let namedFishes: namedFishesType = (1, &quot;tow&quot;, false)</span><br></pre></td></tr></table></figure><br>元组判断  (使用下划线（ _）来表明匹配所有可能的值)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let somePoint = (1, -1)</span><br><span class="line">switch somePoint &#123;</span><br><span class="line">case (0, 0):   </span><br><span class="line">     print(&quot;(0, 0) is at the origin&quot;)</span><br><span class="line">case (_, 0):    </span><br><span class="line">     print(&quot;(\(somePoint.0), 0) is on the x-axis&quot;)</span><br><span class="line">case (0, _):</span><br><span class="line">     print(&quot;(0, \(somePoint.1)) is on the y-axis&quot;)</span><br><span class="line">case (-2...2, -2...2):</span><br><span class="line">     print(&quot;(\(somePoint.0), \(somePoint.1)) is inside the box&quot;)</span><br><span class="line">default:    print(&quot;(\(somePoint.0), \(somePoint.1)) is outside of the box&quot;)&#125;</span><br><span class="line"></span><br><span class="line">// prints &quot;(1, 1) is inside the box&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><ol>
+<li>do-while换成了<code>repeat-while</code> 其它不变</li>
+<li>各种 <code>condition</code>  :  condition语句可以不用括号包裹，如 ：if i&gt;10{ statements}<pre><code>condition只支持true or false  不再像oc支持判空或者判0 必须加以判定，如：if ob != nil {}      if  index != 0 {}</code></pre></li>
+<li><code>switch</code>语句，不再需要显式break语句，不再贯穿，如果需要贯穿则需要加关键字 fallthrough<pre><code>可用区间匹配  ...  ..&lt; 
+复合情况  ，可用，分隔  case 1,3,5,6:</code></pre></li>
+<li>可选项绑定  （与一般if控制流有区别，if 后condition 必定是Bool） <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;12&quot;        </span><br><span class="line">if let id = Int(str) &#123;     </span><br><span class="line">       print(&quot;解析成功&quot;)        </span><br><span class="line">&#125;else&#123;     </span><br><span class="line">       print(&quot;解析失败&quot;)        </span><br><span class="line">&#125;</span><br><span class="line">//普通if用法         </span><br><span class="line">let str = &quot;12&quot;        </span><br><span class="line">let id = Int(str)        </span><br><span class="line">if id != nil &#123;      </span><br><span class="line">      print(&quot;解析成功&quot;)        </span><br><span class="line">&#125;else&#123;      </span><br><span class="line">      print(&quot;解析失败&quot;)        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="？和！的使用和区别"><a href="#？和！的使用和区别" class="headerlink" title="？和！的使用和区别"></a>？和！的使用和区别</h2><h3 id="问号？"><a href="#问号？" class="headerlink" title="问号？"></a>问号？</h3><ol>
+<li>声明时添加？，告诉编译器这个是<code>Optional</code>的，如果声明时没有手动初始化，就自动初始化为nil</li>
+<li>在对变量值操作前添加？，判断如果变量时nil，则不响应后面的方法。</li>
+</ol>
+<h3 id="叹号！"><a href="#叹号！" class="headerlink" title="叹号！"></a>叹号！</h3><ol>
+<li>声明时添加！，告诉编译器这个是<code>Optional</code>的，并且之后对该变量操作的时候，都隐式的在操作前添加！</li>
+<li>在对变量操作前添加！，表示默认为非nil，直接解包进行处理</li>
+</ol>
+<h2 id="不确定类型"><a href="#不确定类型" class="headerlink" title="不确定类型"></a>不确定类型</h2><ol>
+<li>AnyObject  可以表示任何类类型的实例。</li>
+<li>Any  可以表示任何类型，包括函数类型。</li>
+</ol>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ol>
+<li>协议可以放属性，子类可以继承修改  如：<code>var nickName:String { get set}</code></li>
+<li>协议可以放初始化方法</li>
 </ol>
 
     </div>
@@ -256,23 +281,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/23/List/" rel="next" title="Android中的List简要">
-                  <i class="fa fa-chevron-left"></i> Android中的List简要
+                <a href="/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/" rel="next" title="swift-关键字">
+                  <i class="fa fa-chevron-left"></i> swift-关键字
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/24/Context/" rel="prev" title="Context及其子类的分析">
-                  Context及其子类的分析 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/10/23/hello-world/" rel="prev" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -312,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap简要"><span class="nav-number">1.</span> <span class="nav-text">HashMap简要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#储存方式"><span class="nav-number">1.0.1.</span> <span class="nav-text">储存方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LinkedHashMap简要"><span class="nav-number">2.</span> <span class="nav-text">LinkedHashMap简要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TreeMap简要"><span class="nav-number">3.</span> <span class="nav-text">TreeMap简要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的线程安全的Map"><span class="nav-number">4.</span> <span class="nav-text">常用的线程安全的Map</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#元组-Tuples"><span class="nav-number">1.</span> <span class="nav-text">元组 Tuples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制流"><span class="nav-number">2.</span> <span class="nav-text">控制流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#？和！的使用和区别"><span class="nav-number">3.</span> <span class="nav-text">？和！的使用和区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问号？"><span class="nav-number">3.1.</span> <span class="nav-text">问号？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叹号！"><span class="nav-number">3.2.</span> <span class="nav-text">叹号！</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不确定类型"><span class="nav-number">4.</span> <span class="nav-text">不确定类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议"><span class="nav-number">5.</span> <span class="nav-text">协议</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
