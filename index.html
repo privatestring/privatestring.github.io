@@ -647,6 +647,120 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
+      <meta itemprop="name" content="Joker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">swift-关键字</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-02 16:07:26" itemprop="dateCreated datePublished" datetime="2018-01-02T16:07:26+08:00">2018-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-31 16:57:50" itemprop="dateModified" datetime="2019-10-31T16:57:50+08:00">2019-10-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="objc-用于swift提供oc调用"><a href="#objc-用于swift提供oc调用" class="headerlink" title="@objc 用于swift提供oc调用"></a><code>@objc</code> 用于swift提供oc调用</h2><ol>
+<li>在方法上加如<br><br>@objc private func gotoLanguage(_ sender:UIButton){}<br><br>因为Button加事件是OC调用  使用 btn.addTarget(self, action: #selector(self.gotoLanguage(_:)), for: .touchUpInside)<h2 id="数据类型-方法"><a href="#数据类型-方法" class="headerlink" title="数据类型 方法"></a>数据类型 方法</h2><ol>
+<li><code>var</code> 可变数据 </li>
+<li><code>let</code>不可变数据，常量   </li>
+<li><code>typealias</code> 给类型加别名   typealias  joker = UIViewController</li>
+<li><code>as</code>  <code>is</code>   String as NSString  转型  类型检查操作符 is   let s = “joker”;  if s is String {}</li>
+<li><code>inout</code>  参见三，swift基础的方法</li>
+<li><code>lazy</code> 懒加载</li>
+<li><code>static class</code>  在func前加的关键字表示类型方法，都可以用于指定类方法.不同的是用class关键字指定的类方法可以被子类重写</li>
+<li><code>get{retrun value}</code> <code>set{newValue}</code> 使用set 必须要用get 但是get 可以单独使用<br><br><code>willSet { newValue} didSet {oldValue}</code>  set方法监听，不能与上面的共存，官方编译器不允许</li>
+<li><code>mutating</code>  异变，结构体和枚举是值类型。默认情况下，值类型属性不能被自身的实例方法修改，mutating加在func前可进行修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;    </span><br><span class="line">   var x = 0.0, y = 0.0    </span><br><span class="line">   mutating func moveBy(x deltaX: Double, y deltaY: Double) &#123;   </span><br><span class="line">        x += deltaX   </span><br><span class="line">        y += deltaY    </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var somePoint = Point(x: 1.0, y: 1.0)</span><br><span class="line">somePoint.moveBy(x: 2.0, y: 3.0)</span><br><span class="line">print(&quot;The point is now at (\(somePoint.x), \(somePoint.y))&quot;)</span><br><span class="line">// prints &quot;The point is now at (3.0, 4.0)&quot;</span><br><span class="line">-------------------------------------------------------- </span><br><span class="line">enum TriStateSwitch &#123;    </span><br><span class="line">      case off, low, high    </span><br><span class="line">      mutating func next() &#123;        </span><br><span class="line">          switch self &#123;        case .off:            self = .low        case .low:            self = .high        case .high:            self = .off        &#125;    &#125;&#125;var ovenLight = TriStateSwitch.lowovenLight.next()// ovenLight is now equal to .highovenLight.next()// ovenLight is now equal to .off</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="10">
+<li><code>subscript</code> 下标 下标脚本允许你通过在实例名后面的方括号内写一个或多个值对该类的实例进行查询， 如：someArray[index]，someDictionary[key]<br><br>自定义：get set可选，与类属性一样<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">subscript(index: Int) -&gt; Int &#123;</span><br><span class="line">    get &#123;        </span><br><span class="line">        // return an appropriate subscript value here</span><br><span class="line">        &#125;    </span><br><span class="line">    set(newValue) &#123;        </span><br><span class="line">        // perform a suitable setting action here</span><br><span class="line">        &#125;</span><br><span class="line">&#125; </span><br><span class="line">-------------------------------------------------------- </span><br><span class="line">struct TimesTable &#123;</span><br><span class="line">    let multiplier: Int</span><br><span class="line">    subscript(index: Int) -&gt; Int &#123; </span><br><span class="line">       return multiplier * index</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let threeTimesTable = TimesTable(multiplier: 3)</span><br><span class="line">print(&quot;six times three is \(threeTimesTable[6])&quot;)</span><br><span class="line">// prints &quot;six times three is 18&quot;</span><br><span class="line">-------------------------------------------------------- </span><br><span class="line">struct Matrix &#123;</span><br><span class="line">    let rows: Int, columns: Int</span><br><span class="line">    var grid: [Double]</span><br><span class="line">    init(rows: Int, columns: Int) &#123;</span><br><span class="line">        self.rows = rows</span><br><span class="line">        self.columns = columns </span><br><span class="line">        grid = Array(repeating: 0.0, count: rows * columns)</span><br><span class="line">    &#125;</span><br><span class="line">    func indexIsValid(row: Int, column: Int) -&gt; Bool &#123;</span><br><span class="line">        return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns</span><br><span class="line">    &#125;</span><br><span class="line">    subscript(row: Int, column: Int) -&gt; Double &#123;</span><br><span class="line">        get &#123;</span><br><span class="line">            assert(indexIsValid(row: row, column: column), &quot;Index out of range&quot;)</span><br><span class="line">            return grid[(row * columns) + column]</span><br><span class="line">        &#125;</span><br><span class="line">        set &#123;</span><br><span class="line">            assert(indexIsValid(row: row, column: column), &quot;Index out of range&quot;)</span><br><span class="line">            grid[(row * columns) + column] = newValue</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var matrix = Matrix(rows: 2, columns: 2)</span><br><span class="line">matrix[0, 1] = 1.5</span><br><span class="line">matrix[1, 0] = 3.2</span><br><span class="line">//  0.0 1.5</span><br><span class="line">//  3.2 0.0</span><br></pre></td></tr></table></figure></li>
+<li><code>overide</code>  重写var    func     class fuc    subscript</li>
+<li><code>final</code>   阻止子类对相应的属性，方法，下标等重写</li>
+</ol>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><ol>
+<li>switch 贯穿  <code>fallthrough</code></li>
+<li>switch 分句检查 <code>where</code></li>
+<li>判断语句：1guard1   guard condition else{ statements;  retrun}  与if语句类似，相比总有一个else语句<br><br>else里面必需用<code>return</code> ， <code>break</code> ， <code>continue</code> 或者 <code>throw</code> 返回<br><br>它会让正常地写代码而不用把它们包裹进else 代码块，并且它允许你保留在需求之后处理危险的需求</li>
+<li>sdk版本号判定，系统新增   if <code>#available</code>(iOS 10, macOS 10.12, *) {}</li>
+<li><code>defer</code>  defer语句延迟执行直到当前范围退出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">func processFile(filename: String) throws &#123;</span><br><span class="line">    if exists(filename) &#123;</span><br><span class="line">        let file = open(filename)</span><br><span class="line">        defer &#123;</span><br><span class="line">            close(file)</span><br><span class="line">        &#125;</span><br><span class="line">        while let line = try file.readline() &#123;</span><br><span class="line">            // Work with the file.</span><br><span class="line">        &#125;        </span><br><span class="line">        // close(file) is called here, at the end of the scope.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+使用 <code>defer</code>语句来保证 <code>open(_:)</code>函数能调用 <code>close(_:)</code></li>
+</ol>
+<ol start="6">
+<li>访问控制<br><pre><code>通过在实体的引入之前添加 `open` ， `public` ， `internal` ， `fileprivate` ，或 `private`  修饰符来定义访问级别</code></pre>访问优先级如下：<ul>
+<li><code>open</code>:  在Module内外都可以访问，继承，重载</li>
+<li><code>public</code>: 只在Module内可访问，继承，重载，外只能访问</li>
+<li><code>internal</code> ：默认访问级别，本Module操作</li>
+<li><code>fileprivate</code> : 在当前swift文件里可操作</li>
+<li><code>private</code> ：在当前类可操作</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E6%96%B0%E4%B8%9C%E8%A5%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -734,99 +848,6 @@ taskAffinity 属性主要和 singleTask 或者 allowTaskReparenting 属性配对
 <li>协议可以放属性，子类可以继承修改  如：<code>var nickName:String { get set}</code></li>
 <li>协议可以放初始化方法</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
-      <meta itemprop="name" content="Joker">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joker">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/02/swift-%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">swift-关键字</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-02 16:07:26" itemprop="dateCreated datePublished" datetime="2018-01-02T16:07:26+08:00">2018-01-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-29 17:37:43" itemprop="dateModified" datetime="2019-10-29T17:37:43+08:00">2019-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="objc-用于swift提供oc调用"><a href="#objc-用于swift提供oc调用" class="headerlink" title="@objc 用于swift提供oc调用"></a><code>@objc</code> 用于swift提供oc调用</h2><ol>
-<li>在方法上加如<br><br>@objc private func gotoLanguage(_ sender:UIButton){}<br><br>因为Button加事件是OC调用  使用 btn.addTarget(self, action: #selector(self.gotoLanguage(_:)), for: .touchUpInside)<h2 id="数据类型-方法"><a href="#数据类型-方法" class="headerlink" title="数据类型 方法"></a>数据类型 方法</h2><ol>
-<li><code>var</code> 可变数据 </li>
-<li><code>let</code>不可变数据，常量   </li>
-<li><code>typealias</code> 给类型加别名   typealias  joker = UIViewController</li>
-<li><code>as</code>  <code>is</code>   String as NSString  转型  类型检查操作符 is   let s = “joker”;  if s is String {}</li>
-<li><code>inout</code>  参见三，swift基础的方法</li>
-<li><code>lazy</code> 懒加载</li>
-<li><code>static class</code>  在func前加的关键字表示类型方法，都可以用于指定类方法.不同的是用class关键字指定的类方法可以被子类重写</li>
-<li><code>get{retrun value}</code> <code>set{newValue}</code> 使用set 必须要用get 但是get 可以单独使用<br><br><code>willSet { newValue} didSet {oldValue}</code>  set方法监听，不能与上面的共存，官方编译器不允许<br>9，<code>mutating</code>  异变，结构体和枚举是值类型。默认情况下，值类型属性不能被自身的实例方法修改，mutating加在func前可进行修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;    </span><br><span class="line">   var x = 0.0, y = 0.0    </span><br><span class="line">   mutating func moveBy(x deltaX: Double, y deltaY: Double) &#123;   </span><br><span class="line">        x += deltaX   </span><br><span class="line">        y += deltaY    </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var somePoint = Point(x: 1.0, y: 1.0)</span><br><span class="line">somePoint.moveBy(x: 2.0, y: 3.0)</span><br><span class="line">print(&quot;The point is now at (\(somePoint.x), \(somePoint.y))&quot;)</span><br><span class="line">// prints &quot;The point is now at (3.0, 4.0)&quot;</span><br><span class="line">-------------------------------------------------------- </span><br><span class="line">enum TriStateSwitch &#123;    </span><br><span class="line">      case off, low, high    </span><br><span class="line">      mutating func next() &#123;        </span><br><span class="line">          switch self &#123;        case .off:            self = .low        case .low:            self = .high        case .high:            self = .off        &#125;    &#125;&#125;var ovenLight = TriStateSwitch.lowovenLight.next()// ovenLight is now equal to .highovenLight.next()// ovenLight is now equal to .off</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<p>10， subscript 下标 下标脚本允许你通过在实例名后面的方括号内写一个或多个值对该类的实例进行查询， 如：someArray[index]，someDictionary[key]<br> 自定义：get set可选，与类属性一样<br>subscript(index: Int) -&gt; Int {    get {        // return an appropriate subscript value here    }    set(newValue) {        // perform a suitable setting action here    }} struct TimesTable {    let multiplier: Int    subscript(index: Int) -&gt; Int {        return multiplier * index    }}let threeTimesTable = TimesTable(multiplier: 3)print(“six times three is (threeTimesTable[6])”)// prints “six times three is 18”<br> struct Matrix {    let rows: Int, columns: Int    var grid: [Double]    init(rows: Int, columns: Int) {        self.rows = rows        self.columns = columns        grid = Array(repeating: 0.0, count: rows * columns)    }    func indexIsValid(row: Int, column: Int) -&gt; Bool {        return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns    }    subscript(row: Int, column: Int) -&gt; Double {        get {            assert(indexIsValid(row: row, column: column), “Index out of range”)            return grid[(row * columns) + column]        }        set {            assert(indexIsValid(row: row, column: column), “Index out of range”)            grid[(row * columns) + column] = newValue        }    }}var matrix = Matrix(rows: 2, columns: 2)matrix[0, 1] = 1.5matrix[1, 0] = 3.2//  0.0 1.5//  3.2 0.0<br>11， overide  重写var    func     class fuc    subscript<br>12， final   阻止子类对相应的属性，方法，下标等重写</p>
-<p>三，语句<br>1，switch 贯穿  fallthrough<br>2，switch 分句检查 where<br>3,  判断语句：guard   guard condition else{ statements;  retrun}  与if语句类似，相比总有一个else语句  else里面必需用return ， break ， continue 或者 throw 返回<br>                       它会让正常地写代码而不用把它们包裹进else 代码块，并且它允许你保留在需求之后处理危险的需求<br>4，sdk版本号判定，系统新增   if #available(iOS 10, macOS 10.12, *) {}<br>5，defer  defer语句延迟执行直到当前范围退出<br>func processFile(filename: String) throws {    if exists(filename) {        let file = open(filename)        defer {            close(file)        }        while let line = try file.readline() {            // Work with the file.        }        // close(file) is called here, at the end of the scope.    }}使用 defer语句来保证 open(<em>:)函数能调用 close(</em>:)</p>
-<p>6, 访问控制<br>         通过在实体的引入之前添加 open ， public ， internal ， fileprivate ，或 private  修饰符来定义访问级别<br>访问优先级如下：<br>      open:  在Module内外都可以访问，继承，重载<br>      public: 只在Module内可访问，继承，重载，外只能访问<br>     internal ：默认访问级别，本Module操作<br>     fileprivate : 在当前swift文件里可操作<br>      private ：在当前类可操作</p>
 
       
     </div>
