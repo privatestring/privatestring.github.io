@@ -182,6 +182,110 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/6157518?s=400&u=6f570ab3f28c7cd55fd949a1838c4f359cea944f&v=4">
+      <meta itemprop="name" content="Joker">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/05/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">算法复杂度理解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-05 11:13:34" itemprop="dateCreated datePublished" datetime="2019-12-05T11:13:34+08:00">2019-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-09 20:38:34" itemprop="dateModified" datetime="2019-12-09T20:38:34+08:00">2019-12-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="算法复杂度分为时间复杂度，空间复杂度"><a href="#算法复杂度分为时间复杂度，空间复杂度" class="headerlink" title="算法复杂度分为时间复杂度，空间复杂度"></a>算法复杂度分为<code>时间复杂度</code>，<code>空间复杂度</code></h1><pre><code>时间复杂度：指执行当前算法所消耗的时间
+空间复杂度：指执行当前算法所需要占用的内存空间</code></pre><h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i = 0,n=1000</span><br><span class="line">i++</span><br><span class="line">for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    i++ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们假设一行代码执行时长为1，那么总时长为2+n,这个算法的耗时随着n的增加而增加，用时间复杂度表示为：O(n)</p>
+<h3 id="常见的时间复杂度量级有："><a href="#常见的时间复杂度量级有：" class="headerlink" title="常见的时间复杂度量级有："></a>常见的时间复杂度量级有：</h3><ul>
+<li>常数阶O(1)</li>
+<li>对数阶O(logN)</li>
+<li>线性阶O(n)</li>
+<li>线性阶对数O(nlogN)</li>
+<li>平方阶O(n²)</li>
+<li>立方阶O(n³)</li>
+<li>n次方阶O(nⁿ)</li>
+<li>指数阶O(2^n)</li>
+</ul>
+<h2 id="常数阶O-1"><a href="#常数阶O-1" class="headerlink" title="常数阶O(1)"></a>常数阶O(1)</h2><pre><code>无循环的代码，执行一次就完了</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">i++;</span><br><span class="line">print(i);</span><br></pre></td></tr></table></figure>
+<h2 id="对数阶O-logN"><a href="#对数阶O-logN" class="headerlink" title="对数阶O(logN)"></a>对数阶O(logN)</h2><pre><code>执行时长成对数上涨</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i = 1;</span><br><span class="line">while(i&lt;n)&#123;</span><br><span class="line">   i = i*2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="线性阶O-n"><a href="#线性阶O-n" class="headerlink" title="线性阶O(n)"></a>线性阶O(n)</h2><pre><code>执行一下循环</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int j = 1;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    j+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="线性对数阶O-nlogN"><a href="#线性对数阶O-nlogN" class="headerlink" title="线性对数阶O(nlogN)"></a>线性对数阶O(nlogN)</h2><pre><code>简单的线性+对数叠加</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int j = 1;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    while(j&lt;n)&#123;</span><br><span class="line">       j = j*2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="平方阶O-n²"><a href="#平方阶O-n²" class="headerlink" title="平方阶O(n²)"></a>平方阶O(n²)</h2><pre><code>两层循环</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int m = 0;</span><br><span class="line">for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">    for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">       m += i+j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="立方阶O-n³"><a href="#立方阶O-n³" class="headerlink" title="立方阶O(n³)"></a>立方阶O(n³)</h2><pre><code>3层循环</code></pre><h2 id="m次方阶O-nⁿ"><a href="#m次方阶O-nⁿ" class="headerlink" title="m次方阶O(nⁿ)"></a>m次方阶O(nⁿ)</h2><pre><code>n层循环</code></pre><h2 id="指数阶O-2-n"><a href="#指数阶O-2-n" class="headerlink" title="指数阶O(2^n)"></a>指数阶O(2^n)</h2><pre><code>递归函数执行时长</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">long aFunc(int n) &#123;    </span><br><span class="line">     if (n &lt;= 1) &#123;        </span><br><span class="line">         return 1;</span><br><span class="line">     &#125; else &#123;        </span><br><span class="line">         return aFunc(n - 1) + aFunc(n - 2);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度算法包括：</p>
+<ol>
+<li>程序本身所占的空间</li>
+<li>输入数据所占的空间</li>
+<li>辅助变量所占的空间</li>
+</ol>
+<h2 id="常数阶O-1-1"><a href="#常数阶O-1-1" class="headerlink" title="常数阶O(1)"></a>常数阶O(1)</h2><pre><code>与变量无关，具体固定的空间占用</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 1; i&lt;=n ; i++)&#123;</span><br><span class="line">    i+=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="线性阶O-n-1"><a href="#线性阶O-n-1" class="headerlink" title="线性阶O(n)"></a>线性阶O(n)</h2><pre><code>分配的空间与变量n相关，随着n的变化而变化</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void fun(int n)&#123;</span><br><span class="line"> int a[] = new int[n]</span><br><span class="line"> for(int i = 1; i&lt;=n ; i++)&#123;</span><br><span class="line">       a[i]=i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -207,7 +311,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-12 10:32:20 / 修改时间：18:24:50" itemprop="dateCreated datePublished" datetime="2019-11-12T10:32:20+08:00">2019-11-12</time>
+              <time title="创建时间：2019-11-12 10:32:20 / 修改时间：19:47:42" itemprop="dateCreated datePublished" datetime="2019-11-12T10:32:20+08:00">2019-11-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +373,7 @@
 <h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><pre><code>将对象组合成树形结构以表示&quot;部分-整体&quot;的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。</code></pre><p>应用场景：手机文件夹树状结构</p>
 <h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>应用场景：ContextWrapper的封装，包装一个人：装上白皮肤是白种人，装上黑皮肤是黑种人，装上黄皮肤是黄种人。对象只是一个人</p>
 <h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2><pre><code>隐藏系统的复杂性，并向客户端提供了一个客户端可以访问系统的接口。</code></pre><p>应用场景：第三库的封装使用，提供给调用者尽量简单的访问接口</p>
-<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2><pre><code>减少创建对象的数量，以减少内存占用和提高性能。</code></pre><p>应用场景：字符串池，Integer -127~128的装箱</p>
+<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2><pre><code>减少创建对象的数量，以减少内存占用和提高性能。</code></pre><p>应用场景：字符串池，Integer -128~127的装箱</p>
 <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>应用场景：Retrofit接口的请求，暴露给外面的是一个接口，使用动态代理去实现okhttp请求</p>
 <h1 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h1><pre><code>这些设计模式特别关注对象之间的通信。</code></pre><h2 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h2><pre><code>避免请求发送者与接收者耦合在一起，让多个对象都有可能接收请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。</code></pre><p>应用场景：App View的事件分发机制</p>
 <h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><pre><code>这种模式用于顺序访问集合对象的元素，不需要知道集合对象的底层表示。</code></pre><p>应用场景：JAVA数组集合的访问</p>
@@ -1197,7 +1301,7 @@ let list = [“1”,”2”]<br>let s = list[3] ?? “3”<figure class="highlig
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1210,11 +1314,16 @@ let list = [“1”,”2”]<br>let s = list[3] ?? “3”<figure class="highlig
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/privatestring" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;privatestring" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
@@ -1235,7 +1344,7 @@ let list = [“1”,”2”]<br>let s = list[3] ?? “3”<figure class="highlig
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
